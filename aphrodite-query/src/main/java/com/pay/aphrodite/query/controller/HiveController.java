@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import com.pay.aphrodite.model.enums.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -64,5 +67,12 @@ public class HiveController {
         logger.info(sql.toString());
         hiveJdbcTemplate.execute(sql.toString());
         return "Done";
+    }
+
+    @RequestMapping(value="/hql",method = RequestMethod.POST)
+    @ResponseBody
+    public Result executeHQL(String hql){
+        hiveJdbcTemplate.execute(hql);
+        return Result.SUCCESS;
     }
 }

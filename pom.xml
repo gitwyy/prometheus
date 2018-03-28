@@ -28,6 +28,7 @@
 		<mysql-connector-java.version>6.0.6</mysql-connector-java.version>
 		<commons-configuration.version>1.10</commons-configuration.version>
 		<druid.version>1.1.6</druid.version>
+		<tomcat-jdbc.version>8.5.20</tomcat-jdbc.version>
 	</properties>
 	<modules>
 		<module>aphrodite-util</module>
@@ -72,6 +73,13 @@
 				<artifactId>spring-boot-starter-jdbc</artifactId>
 				<version>${spring-boot.version}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>org.apache.tomcat</groupId>
+				<artifactId>tomcat-jdbc</artifactId>
+				<version>${tomcat-jdbc.version}</version>
+			</dependency>
+
 
 			<!-- https://mvnrepository.com/artifact/commons-configuration/commons-configuration -->
 			<dependency>

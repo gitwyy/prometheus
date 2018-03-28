@@ -16,7 +16,6 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource(ignoreResourceNotFound = true, value = {
         "classpath:/application.properties",
         "classpath:/system.properties"})
-@EnableAutoConfiguration
 public class WebApplication {
     private static final Logger logger = LoggerFactory.getLogger(WebApplication.class);
 
