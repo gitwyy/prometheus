@@ -1,0 +1,14 @@
+
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+.settings
+out
+gen
+target/
+.classpath
+.project
+catalina.home_IS_UNDEFINED
