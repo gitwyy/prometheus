@@ -1,20 +1,21 @@
 package com.pay.aphrodite.query.controller;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 import com.pay.aphrodite.model.enums.Result;
+import com.pay.aphrodite.query.service.HqlService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/hive")
@@ -22,57 +23,34 @@ public class HiveController {
     private static final Logger logger = LoggerFactory.getLogger(HiveController.class);
 
     @Autowired
-    @Qualifier("hiveJdbcTemplate")
-    private JdbcTemplate hiveJdbcTemplate;
+    private HqlService hqlService;
 
-    @RequestMapping("/create")
-    public ModelAndView create() {
-
-        StringBuffer sql = new StringBuffer("create table IF NOT EXISTS ");
-        sql.append("HIVE_TEST");
-        sql.append("(KEY INT, VALUE STRING)");
-        sql.append("PARTITIONED BY (CTIME DATE)"); // 分区存储
-        sql.append("ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' "); // 定义分隔符
-        sql.append("STORED AS TEXTFILE"); // 作为文本存储
-
-        logger.info(sql.toString());
-        hiveJdbcTemplate.execute(sql.toString());
-
-        return new ModelAndView("index");
-
-    }
-
-    @RequestMapping("/insert")
-    public String insert() {
-        hiveJdbcTemplate.execute("insert into hive_test(key, value) values('Neo','Chen')");
-        return "Done";
-    }
-
-    @RequestMapping("/select")
-    public String select() {
-        String sql = "select * from HIVE_TEST";
-        List<Map<String, Object>> rows = hiveJdbcTemplate.queryForList(sql);
-        Iterator<Map<String, Object>> it = rows.iterator();
-        while (it.hasNext()) {
-            Map<String, Object> row = it.next();
-            System.out.println(String.format("%s\t%s", row.get("key"), row.get("value")));
-        }
-        return "Done";
-    }
-
-    @RequestMapping("/delete")
-    public String delete() {
-        StringBuffer sql = new StringBuffer("DROP TABLE IF EXISTS ");
-        sql.append("HIVE_TEST");
-        logger.info(sql.toString());
-        hiveJdbcTemplate.execute(sql.toString());
-        return "Done";
-    }
-
-    @RequestMapping(value="/hql",method = RequestMethod.POST)
+    @RequestMapping(value="/hql/query",method = RequestMethod.POST)
     @ResponseBody
-    public Result executeHQL(String hql){
-        hiveJdbcTemplate.execute(hql);
-        return Result.SUCCESS;
+    public String hqlQuery(String hql){
+        StopWatch sw = new StopWatch();
+        List<Map<String, String>> list = hqlService.get(hql);
+
+        list.forEach((m)->{m.entrySet().forEach((e)->{
+            logger.debug("result=[{}:{}]",e.getKey(),e.getValue());
+        });});
+        sw.stop();
+
+        logger.debug(sw.prettyPrint());
+        return Result.SUCCESS.toJson("detail","executeHQL");
+    }
+
+    @RequestMapping(value="/hql/download",method = RequestMethod.POST)
+    @ResponseBody
+    public String hqlDownload(String hql,String path){
+        StopWatch sw = new StopWatch();
+        sw.start("hqlDownload");
+        List<Map<String, String>> list = hqlService.load(hql, path);
+        sw.stop();
+        logger.debug(sw.prettyPrint());
+        list.forEach((m)->{m.entrySet().forEach((e)->{
+            logger.debug("result=[{}:{}]",e.getKey(),e.getValue());
+        });});
+        return Result.SUCCESS.toJson("detail","hqlDownload");
     }
 }
