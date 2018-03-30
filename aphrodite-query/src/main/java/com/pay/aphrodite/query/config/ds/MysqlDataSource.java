@@ -17,6 +17,14 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import javax.sql.DataSource;
 
 
+/**
+ * @ClassName:MysqlDataSource
+ * @Author: yangyang.wang
+ * @Date: 2018-03-30 19:36
+ * @Version: 1.0
+ * @Description: mysql 数据源配置类（双数据源 mysql 配置为副数据源 ,集成了mybatis）
+ *
+ **/
 @Configuration
 @MapperScan(value = MysqlDataSource.PACKAGE,basePackages = MysqlDataSource.PACKAGE, sqlSessionFactoryRef = "mysqlSqlSessionFactory")
 public class MysqlDataSource {

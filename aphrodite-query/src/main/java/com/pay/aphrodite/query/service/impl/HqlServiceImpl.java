@@ -12,7 +12,7 @@ import java.util.Map;
 @Service
 public class HqlServiceImpl implements HqlService {
 
-    //@Resource(name = "hqlDao")
+    @Resource(name = "hqlDao")
     private HqlDao hqlDao;
 
     @Override
