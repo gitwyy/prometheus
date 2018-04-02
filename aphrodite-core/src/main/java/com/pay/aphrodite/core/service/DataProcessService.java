@@ -10,5 +10,5 @@ package com.pay.aphrodite.core.service;
  *
  **/
 public interface DataProcessService {
-    Excel toExcel(String path);
+    void toExcel(String path);
 }

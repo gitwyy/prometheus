@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
@@ -25,6 +24,7 @@ import javax.sql.DataSource;
  * @Description: mysql 数据源配置类（双数据源 mysql 配置为副数据源 ,集成了mybatis）
  *
  **/
+@SuppressWarnings("ALL")
 @Configuration
 @MapperScan(value = MysqlDataSource.PACKAGE,basePackages = MysqlDataSource.PACKAGE, sqlSessionFactoryRef = "mysqlSqlSessionFactory")
 public class MysqlDataSource {

@@ -9,11 +9,6 @@
 	<artifactId>aphrodite-portal</artifactId>
 	<packaging>war</packaging>
 	<dependencies>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-		</dependency>
-
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -68,8 +63,12 @@
 			<artifactId>aphrodite-model</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 	<profiles>
 		<profile>
 			<id>production</id>
