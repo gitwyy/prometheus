@@ -12,7 +12,7 @@ import java.util.Map;
 @Service
 public class HqlServiceImpl implements HqlService {
 
-    @Resource(name = "hqlDao")
+    @Autowired
     private HqlDao hqlDao;
 
     @Override
@@ -28,6 +28,6 @@ public class HqlServiceImpl implements HqlService {
 
     @Override
     public List<Map<String, String>> load(String hql, String localPath) {
-        return hqlDao.load(hql);
+        return hqlDao.load(hql,localPath);
     }
 }

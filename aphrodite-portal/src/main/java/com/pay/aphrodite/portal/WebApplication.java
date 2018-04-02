@@ -1,6 +1,5 @@
-package com.pay.aphrodite.query;
+package com.pay.aphrodite.portal;
 
-import com.pay.aphrodite.query.config.ds.MysqlDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;

@@ -1,4 +1,4 @@
-package com.pay.aphrodite.query.service;
+package com.pay.aphrodite.core.service;
 
 /**
  * @ClassName:DataProcessService

@@ -19,7 +19,7 @@ import javax.sql.DataSource;
  * @Author: yangyang.wang
  * @Date: 2018-03-30 19:34
  * @Version: 1.0
- * @Description: Hive jdbc 数据源配置类（双数据源 hive 配置为主数据源 ,集成了mybatis）
+ * @Description: Hive jdbc 数据源配置类（hive 配置为主数据源 ,集成了mybatis）
  *
  **/
 @Configuration

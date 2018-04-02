@@ -1,5 +1,4 @@
-package com.pay.aphrodite.query.dao.mysql;
-
+package com.pay.aphrodite.portal.dao.hql;
 
 import com.pay.aphrodite.model.entity.HqlLog;
 

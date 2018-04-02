@@ -1,7 +1,6 @@
 package com.pay.aphrodite.query.controller;
 
 
-import com.pay.aphrodite.model.enums.Result;
 import com.pay.aphrodite.query.service.HqlService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +23,7 @@ import java.util.Map;
  *
  **/
 
+@SuppressWarnings("ALL")
 @Controller
 @RequestMapping("/hive")
 public class HiveController {
@@ -39,7 +39,7 @@ public class HiveController {
      * @Date: 2018-03-30 18:38
      * @Param: [hql]
      * @Return: java.lang.String
-     * @Description: TODO
+     * @Description:
      * @Modifyby:yangyang.wang
      **/
     @RequestMapping(value="/hql/query",method = RequestMethod.POST)
@@ -54,7 +54,7 @@ public class HiveController {
         sw.stop();
 
         logger.debug(sw.prettyPrint());
-        return Result.SUCCESS.toJson("detail","executeHQL");
+        return null;
     }
 
 
@@ -77,6 +77,6 @@ public class HiveController {
         list.forEach((m)->{m.entrySet().forEach((e)->{
             logger.debug("result=[{}:{}]",e.getKey(),e.getValue());
         });});
-        return Result.SUCCESS.toJson("detail","hqlDownload");
+        return null;
     }
 }

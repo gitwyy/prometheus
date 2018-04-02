@@ -1,4 +1,4 @@
-package com.pay.aphrodite.query.config.ds;
+package com.pay.aphrodite.core.config.ds;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -40,7 +40,10 @@ public class MysqlDataSource {
     private String mysqlUsername;
     @Value("${mysql.password}")
     private String mysqlPassword;
-    
+
+
+
+
     @Bean(name = "mysqlJdbcDataSource")
     public DataSource mysqlDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
