@@ -9,7 +9,7 @@
 		]]>
 	</insert>
 
-	<select id="get" resultType="java.util.Map" parameterType="java.lang.String">
+	<select id="select" resultType="java.util.Map" parameterType="java.lang.String">
 		<![CDATA[
 			${hql}
 		]]>

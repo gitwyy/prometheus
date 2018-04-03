@@ -46,7 +46,7 @@ public class HiveController {
     @ResponseBody
     public String hqlQuery(String hql){
         StopWatch sw = new StopWatch();
-        List<Map<String, String>> list = hqlService.get(hql);
+        List<Map<String, String>> list = hqlService.select(hql);
 
         list.forEach((m)->{m.entrySet().forEach((e)->{
             logger.debug("result=[{}:{}]",e.getKey(),e.getValue());

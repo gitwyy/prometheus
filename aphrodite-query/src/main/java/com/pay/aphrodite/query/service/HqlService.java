@@ -32,7 +32,7 @@ public interface HqlService {
      * @Description: 数据查询
      * @Modifyby: yangyang.wang
      **/
-    public List<Map<String,String>> get(String hql);
+    public List<Map<String,String>> select(String hql);
 
 
     /**

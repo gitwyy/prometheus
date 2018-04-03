@@ -4,6 +4,8 @@ import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -23,8 +25,9 @@ import javax.sql.DataSource;
  *
  **/
 @Configuration
-@MapperScan(value = HiveDataSource.PACKAGE,basePackages = HiveDataSource.PACKAGE, sqlSessionFactoryRef = "hiveSqlSessionFactory")
+@MapperScan(basePackages = HiveDataSource.PACKAGE, sqlSessionFactoryRef = "hiveSqlSessionFactory")
 public class HiveDataSource {
+    private Logger log = LoggerFactory.getLogger(HiveDataSource.class);
     /* @Comment: mybatis 配置文件扫描路径 */
     public static final String MAPPER_LOCATION = "classpath:com/pay/aphrodite/query/dao/hive/*.xml";
     /* @Comment: mybatis dao 包扫描 */
@@ -47,6 +50,7 @@ public class HiveDataSource {
         dataSource.setDriverClassName(hiveDriverClassName);
         dataSource.setUsername(hiveUsername);
         dataSource.setPassword(hivePassword);
+        log.debug("hiveJdbcDataSource ok");
         return dataSource;
     }
 
@@ -54,6 +58,7 @@ public class HiveDataSource {
     @Bean(name = "hiveTransactionManager")
     @Primary
     public DataSourceTransactionManager hiveTransactionManager(@Qualifier("hiveJdbcDataSource")DataSource hiveDataSource) {
+        log.debug("hiveTransactionManager ..ok");
         return new DataSourceTransactionManager(hiveDataSource);
     }
 
@@ -65,6 +70,7 @@ public class HiveDataSource {
         sessionFactory.setDataSource(hiveDataSource);
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
                 .getResources(MAPPER_LOCATION));
+        log.debug("hiveSqlSessionFactory ok");
         return sessionFactory.getObject();
     }
 

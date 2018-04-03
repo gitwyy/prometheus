@@ -25,9 +25,9 @@ import javax.sql.DataSource;
  *
  **/
 @Configuration
-@MapperScan(value = MysqlDataSource.PACKAGE,basePackages = MysqlDataSource.PACKAGE, sqlSessionFactoryRef = "mysqlSqlSessionFactory")
+@MapperScan(basePackages = MysqlDataSource.PACKAGE, sqlSessionFactoryRef = "mysqlSqlSessionFactory")
 public class MysqlDataSource {
-    private static final Logger logger = LoggerFactory.getLogger(MysqlDataSource.class);
+    private static final Logger log = LoggerFactory.getLogger(MysqlDataSource.class);
 
     public static final String MAPPER_LOCATION = "classpath:com/pay/aphrodite/query/dao/mysql/*.xml";
     public static final String PACKAGE = "com.pay.aphrodite.query.dao.mysql";
@@ -48,11 +48,13 @@ public class MysqlDataSource {
         dataSource.setUrl(mysqlUrl);
         dataSource.setUsername(mysqlUsername);
         dataSource.setPassword(mysqlPassword);
+        log.debug("mysqlJdbcDataSource ok");
         return dataSource;
     }
 
     @Bean(name = "mysqlTransactionManager")
     public DataSourceTransactionManager mysqlTransactionManager(@Qualifier("mysqlJdbcDataSource") DataSource mysqlDataSource) {
+        log.debug("mysqlTransactionManager ..ok");
         return new DataSourceTransactionManager(mysqlDataSource);
     }
 
@@ -63,6 +65,7 @@ public class MysqlDataSource {
         sessionFactory.setDataSource(mysqlDataSource);
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
                 .getResources(MAPPER_LOCATION));
+        log.debug("mysqlSqlSessionFactory ok");
         return sessionFactory.getObject();
     }
 

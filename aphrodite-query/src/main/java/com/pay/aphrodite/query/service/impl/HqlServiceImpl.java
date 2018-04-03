@@ -22,8 +22,8 @@ public class HqlServiceImpl implements HqlService {
     }
 
     @Override
-    public List<Map<String, String>> get(String hql) {
-        return hqlDao.get(hql);
+    public List<Map<String, String>> select(String hql) {
+        return hqlDao.select(hql);
     }
 
     @Override

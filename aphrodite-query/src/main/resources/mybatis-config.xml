@@ -3,6 +3,5 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeHandlers>
-		<typeHandler javaType="java.lang.Enum" jdbcType="VARCHAR" handler="com.pay.commons.web.mybatis.EnumHandler"/>
 	</typeHandlers>
 </configuration>
