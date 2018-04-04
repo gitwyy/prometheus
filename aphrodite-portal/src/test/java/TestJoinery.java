@@ -17,23 +17,14 @@ public class TestJoinery {
         // 测试读取CSV
         DataFrame df = DataFrame.readCsv("src/test/resources/test/joinery/order.csv");
         System.out.println(df.toString());
+        df.writeCsv("src/test/resources/test/joinery/order_duplicate.csv");
     }
 
     @Test
-    public void test02(){
+    public void test02() throws IOException {
         // 测试读取Excel
-
-    }
-
-    @Test
-    public void test03(){
-        // 测试写入CSV
-
-    }
-
-    @Test
-    public void test04(){
-        // 测试写入Excel
-
+        DataFrame df = DataFrame.readXls("src/test/resources/test/joinery/order.xls");
+        System.out.println(df.toString());
+        df.writeXls("src/test/resources/test/joinery/order_duplicate.xls");
     }
 }
