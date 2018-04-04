@@ -86,7 +86,7 @@
         <!-- poi -->
         <dependency>
             <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
+            <artifactId>poi</artifactId>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->

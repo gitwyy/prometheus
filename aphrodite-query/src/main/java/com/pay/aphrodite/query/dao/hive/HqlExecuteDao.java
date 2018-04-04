@@ -10,10 +10,10 @@ import java.util.Map;
  * @Author: yangyang.wang
  * @Date: 2018-03-30 19:37
  * @Version: 1.0
- * @Description: HqlDao
+ * @Description: HqlExecuteDao
  *
  **/
-public interface HqlDao {
+public interface HqlExecuteDao {
 
     public long insert(@Param("hql") String hql);
 

@@ -68,6 +68,40 @@
             <artifactId>druid</artifactId>
         </dependency>
 
+		<dependency>
+			<groupId>ch.netzwerg</groupId>
+			<artifactId>paleo-core</artifactId>
+			<version>0.13.2</version>
+			<type>jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.netzwerg</groupId>
+			<artifactId>paleo-io</artifactId>
+			<version>0.13.2</version>
+			<type>jar</type>
+		</dependency>
+
+		<!-- -->
+		<dependency>
+			<groupId>joinery</groupId>
+			<artifactId>joinery-dataframe</artifactId>
+			<version>1.8</version>
+		</dependency>
+
+
+		<!-- poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.xeiam.xchart</groupId>
+			<artifactId>xchart</artifactId>
+			<version>${xchart.version}</version>
+		</dependency>
+
+
     </dependencies>
 	<profiles>
 		<profile>

@@ -29,9 +29,9 @@ import javax.sql.DataSource;
 public class HiveDataSource {
     private Logger log = LoggerFactory.getLogger(HiveDataSource.class);
     /* @Comment: mybatis 配置文件扫描路径 */
-    public static final String MAPPER_LOCATION = "classpath:com/pay/aphrodite/query/dao/hive/*.xml";
-    /* @Comment: mybatis dao 包扫描 */
-    public static final String PACKAGE = "com.pay.aphrodite.query.dao.hive";
+    public static final String MAPPER_LOCATION = "classpath:com/pay/aphrodite/query/mapper/hive/*.xml";
+    /* @Comment: mybatis mapper 包扫描 */
+    public static final String PACKAGE = "com.pay.aphrodite.query.mapper.hive";
 
     @Value("${hive.url}")
     private String hiveUrl;
