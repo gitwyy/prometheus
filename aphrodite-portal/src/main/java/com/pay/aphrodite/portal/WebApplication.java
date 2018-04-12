@@ -21,5 +21,4 @@ public class WebApplication {
             logger.warn("Spring Boot use profile:{}", profile);
         }
     }
-
 }
