@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 	<property name="LOG_HOME" value="${catalina.home}/logs" />
-	<property name="LOG_FILENAME" value="hestia-portal" />
+	<property name="LOG_FILENAME" value="aphrodite-portal" />
 
 	<appender name="infoAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_HOME}/${LOG_FILENAME}.info.log</file>
