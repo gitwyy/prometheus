@@ -16,7 +16,7 @@
 
         <!-- 防止生成的代码中有很多注释，加入下面的配置控制 -->
         <commentGenerator>
-            <property name="suppressAllComments" value="false" />
+            <property name="suppressAllComments" value="true" />
             <property name="suppressDate" value="true" />
             <property name="author" value="thor"/>
             <!-- 是否添加字段注释 true:是 false：否 -->
@@ -25,9 +25,9 @@
 
         <!-- 数据库连接 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://116.62.64.123:3306/thor?useUnicode=true&amp;characterEncoding=utf8"
-                        userId="thor"
-                        password="!9B$BFUb1Kr@iYqJMoY9">
+                        connectionURL="jdbc:mysql://116.62.64.123:3306/aphrodite?useUnicode=true&amp;characterEncoding=utf8"
+                        userId="aphrodite"
+                        password="s@i##x6MlgSMMcursSrS">
         </jdbcConnection>
 
         <javaTypeResolver >
@@ -35,28 +35,54 @@
         </javaTypeResolver>
 
         <!-- 数据表对应的model层  -->
-        <javaModelGenerator targetPackage="com.thor.query.model" targetProject="src/test/java">
+        <javaModelGenerator targetPackage="com.aphrodite.portal.model" targetProject="src/test/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
         <!-- sql mapper 映射配置文件 -->
-        <sqlMapGenerator targetPackage="com.thor.query.dao.mysql"  targetProject="src/test/resources">
+        <sqlMapGenerator targetPackage="com.aphrodite.portal.dao.mysql"  targetProject="src/test/resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
         <!-- mybatis中的mapper接口 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.thor.query.dao.mysql"  targetProject="src/test/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.aphrodite.portal.dao.mysql"  targetProject="src/test/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
 
         <!-- 数据表进行生成操作 schema:相当于库名; tableName:表名; domainObjectName:对应的DO -->
-        <table schema="thor" tableName="thor_test" domainObjectName="ThorTest"
+        <table schema="aphrodite" tableName="SQL_EXPRESS" domainObjectName="SqlExpress"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
 
+        <table schema="aphrodite" tableName="SQL_FROM" domainObjectName="SqlFrom"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table schema="aphrodite" tableName="SQL_SELECT" domainObjectName="SqlSelect"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table schema="aphrodite" tableName="SQL_SELECT_ITEM" domainObjectName="SqlSelectItem"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table schema="aphrodite" tableName="SQL_TABLE_SOURCE" domainObjectName="SqlTableSource"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+        <table schema="aphrodite" tableName="SQL_WHERE" domainObjectName="SqlWhere"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
     </context>
 </generatorConfiguration>
