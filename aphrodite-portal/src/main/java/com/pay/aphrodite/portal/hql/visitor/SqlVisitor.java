@@ -1,5 +1,7 @@
 package com.pay.aphrodite.portal.hql.visitor;
 
+import com.pay.aphrodite.portal.hql.Condition;
+import com.pay.aphrodite.portal.hql.SqlObject;
 import com.pay.aphrodite.portal.hql.compoment.SqlFromItem;
 import com.pay.aphrodite.portal.hql.compoment.SqlSelect;
 import com.pay.aphrodite.portal.hql.compoment.SqlSelectItem;
@@ -22,5 +24,9 @@ public interface SqlVisitor {
     String visit(SqlWhereItem sqlWhereItem);
 
     String visit(SqlSelect sqlSelect);
+
+    String visit(Condition condition);
+
+    String visit(SqlObject sqlObject);
 }
 

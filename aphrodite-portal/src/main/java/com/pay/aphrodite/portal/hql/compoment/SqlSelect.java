@@ -1,8 +1,10 @@
 package com.pay.aphrodite.portal.hql.compoment;
 
+import com.pay.aphrodite.portal.hql.SqlObject;
 import com.pay.aphrodite.portal.hql.visitor.SqlVisitor;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @ClassName:Select
@@ -11,7 +13,7 @@ import java.util.List;
  * @Version: 1.0
  * @Description:
  **/
-public class SqlSelect extends SqlObject{
+public class SqlSelect extends SqlObject {
 
     private List<SqlSelectItem> selectItemList;
 
@@ -37,8 +39,8 @@ public class SqlSelect extends SqlObject{
     }
 
 
-    public List<SqlSelectItem> getSelectItemList() {
-        return selectItemList;
+    public Optional<List<SqlSelectItem>> getSelectItemList() {
+        return Optional.ofNullable(selectItemList);
     }
 
     public SqlSelect setSelectItemList(List<SqlSelectItem> selectItemList) {
@@ -46,8 +48,8 @@ public class SqlSelect extends SqlObject{
         return this;
     }
 
-    public List<SqlFromItem> getFromItemList() {
-        return fromItemList;
+    public Optional<List<SqlFromItem>> getFromItemList() {
+        return Optional.ofNullable(fromItemList);
     }
 
     public SqlSelect setFromItemList(List<SqlFromItem> fromItemList) {
@@ -55,8 +57,8 @@ public class SqlSelect extends SqlObject{
         return this;
     }
 
-    public List<SqlWhereItem> getWhereItemList() {
-        return whereItemList;
+    public Optional<List<SqlWhereItem>> getWhereItemList() {
+        return Optional.ofNullable(whereItemList);
     }
 
     public SqlSelect setWhereItemList(List<SqlWhereItem> whereItemList) {
