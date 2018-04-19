@@ -22,6 +22,8 @@ public class SqlFromItem extends SqlObject {
     /* @Comment:  表名 */
     private String tableName;
 
+    private SqlFromItem next;
+
     @Override
     public String accept(SqlVisitor sqlVisitor) {
         return sqlVisitor.visit(this);

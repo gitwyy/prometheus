@@ -42,7 +42,7 @@ public class TestMySelectProcessor {
         List<SqlFromItem> fromItems = new ArrayList<>();
 
         fromItems.add(new SqlFromItem().setSqlObjectType(SqlObjectType.EXPR_TABLE_SOURCE).setTableName("table_a").setAlias("tab_alias_a").setJoinType(KeyConstant.LEFT_JOIN));
-        fromItems.add(new SqlFromItem().setSqlObjectType(SqlObjectType.EXPR_TABLE_SOURCE).setTableName("table_b").setAlias("tab_alias_b").setFromCondition(new Condition()));
+        fromItems.add(new SqlFromItem().setSqlObjectType(SqlObjectType.JOIN_TABLE_SOURCE).setTableName("table_b").setAlias("tab_alias_b").setFromCondition(new Condition().setSqlExpr("a=b")));
 
         // 构建 where 语句块
 
@@ -51,7 +51,7 @@ public class TestMySelectProcessor {
         whereItems.add(new SqlWhereItem().setSqlObjectType(SqlObjectType.WHERE_EXPR).setOwner("tab_alias_a").setWhereCondition(new Condition().setSqlExpr("a=b")));
         whereItems.add(new SqlWhereItem().setSqlObjectType(SqlObjectType.WHERE_EXPR).setOwner("tab_alias_b").setWhereCondition(new Condition().setSqlExpr("c=d")));
 
-        sqlSelect.setSelectItemList(selectItem).setFromItemList(fromItems).setWhereItemList(whereItems);
+//        sqlSelect.setSelectItemList(selectItem).setFromItemList(fromItems).setWhereItemList(whereItems);
 
         SqlVisitor visitor = new SqlVisitorImpl();
 

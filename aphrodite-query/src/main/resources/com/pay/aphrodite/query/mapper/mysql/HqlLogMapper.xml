@@ -1,20 +1,106 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.pay.aphrodite.portal.dao.hql.HqlLogDao">
-
-
-	<insert id="insert" parameterType="java.lang.String">
-
-	</insert>
-
-	<select id="get" resultType="java.util.Map" parameterType="java.lang.String">
-
-	</select>
-
-	<select id="load" resultType="java.util.Map" parameterType="java.lang.String">
-
-	</select>
-
-
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pay.aphrodite.query.dao.mysql.HqlLogDao">
+  <resultMap id="BaseResultMap" type="com.pay.aphrodite.model.entity.HqlLog">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+    <result column="OPTIMISTIC" jdbcType="INTEGER" property="optimistic" />
+    <result column="LOG_CONTENT" jdbcType="VARCHAR" property="logContent" />
+    <result column="OPERATOR" jdbcType="VARCHAR" property="operator" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, CREATE_TIME, OPTIMISTIC, LOG_CONTENT, OPERATOR, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from HQL_LOG
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from HQL_LOG
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pay.aphrodite.model.entity.HqlLog">
+    insert into HQL_LOG (CREATE_TIME, OPTIMISTIC,
+      LOG_CONTENT, OPERATOR, REMARK
+      )
+    values (now(), 1,
+      #{logContent,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pay.aphrodite.model.entity.HqlLog">
+    insert into HQL_LOG
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="optimistic != null">
+        OPTIMISTIC,
+      </if>
+      <if test="logContent != null">
+        LOG_CONTENT,
+      </if>
+      <if test="operator != null">
+        OPERATOR,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="optimistic != null">
+        #{optimistic,jdbcType=INTEGER},
+      </if>
+      <if test="logContent != null">
+        #{logContent,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pay.aphrodite.model.entity.HqlLog">
+    update HQL_LOG
+    <set>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="optimistic != null">
+        OPTIMISTIC = #{optimistic,jdbcType=INTEGER},
+      </if>
+      <if test="logContent != null">
+        LOG_CONTENT = #{logContent,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        OPERATOR = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pay.aphrodite.model.entity.HqlLog">
+    update HQL_LOG
+    set CREATE_TIME = #{createTime,jdbcType=DATE},
+      OPTIMISTIC = #{optimistic,jdbcType=INTEGER},
+      LOG_CONTENT = #{logContent,jdbcType=VARCHAR},
+      OPERATOR = #{operator,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

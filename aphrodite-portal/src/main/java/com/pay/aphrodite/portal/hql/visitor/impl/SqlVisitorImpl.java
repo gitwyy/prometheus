@@ -9,7 +9,6 @@ import com.pay.aphrodite.portal.hql.exception.SqlWhereItemException;
 import com.pay.aphrodite.portal.hql.visitor.SqlVisitor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.StringJoiner;
 
 /**
@@ -40,6 +39,7 @@ public class SqlVisitorImpl implements SqlVisitor {
                 log.debug("visit SqlSelectItem case [{}] result [{}]", SqlObjectType.SUBQUERY, sb.toString());
                 break;
             default:
+                sb.append(sqlSelectItem.getSqlExpr());
                 log.debug("visit SqlSelectItem case DEFAULT  no case matched !");
                 break;
         }
@@ -68,10 +68,13 @@ public class SqlVisitorImpl implements SqlVisitor {
             case SUBQUERY:
                 log.debug("visit SqlFromItem case [{}]", SqlObjectType.SUBQUERY);
                 sj.add("(").add(sqlFromItem.getSqlObject().accept(this)).add(")")
-                        .add("as").add(sqlFromItem.getAlias());
+                        .add("as").add(sqlFromItem.getAlias())
+                        .add(sqlFromItem.getFromCondition().accept(this));
+                sj = sqlFromItem.getJoinType() == null? sj :sj.add(sqlFromItem.getJoinType());
                 log.debug("visit SqlFromItem case [{}] result [{}]", SqlObjectType.SUBQUERY, sj.toString());
                 break;
             default:
+                sj.add(sqlFromItem.getSqlExpr());
                 log.debug("visit SqlSelectItem case DEFAULT  no case matched !");
                 break;
         }
@@ -96,6 +99,7 @@ public class SqlVisitorImpl implements SqlVisitor {
                 log.debug("visit SqlWhereItem case [{}] result [{}]", SqlObjectType.SUBQUERY, sb.toString());
                 break;
             default:
+                sb.append(sqlWhereItem.getSqlExpr());
                 log.debug("visit SqlSelectItem case DEFAULT  no case matched !");
                 break;
         }
@@ -134,7 +138,21 @@ public class SqlVisitorImpl implements SqlVisitor {
 
     @Override
     public String visit(Condition condition) {
-        return condition.getSqlExpr();
+        StringBuilder sb = new StringBuilder();
+        switch (condition.getSqlObjectType()){
+            case BINARY_CONDITION:
+                sb.append(condition.getLeft().getOwner()).append(".")
+                        .append(condition.getLeft().getElement())
+                        .append(condition.getSymbol())
+                        .append(condition.getRight().getOwner()).append(".")
+                        .append(condition.getElement());
+                break;
+            case CONDITON_EXPR:
+                sb.append(condition.getSqlExpr());
+                break;
+        }
+
+        return sb.toString();
     }
 
     @Override

@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 public class DebugLoggerAop {
     private Logger log = LoggerFactory.getLogger("debug-info");
 
-    @Around("execution(public * com.pay.aphrodite.portal.*.*(..))")
+    @Around("execution(public * com.pay.aphrodite.portal.service.*.*(..))")
     public Object aroundAdvice(ProceedingJoinPoint pjp) throws Throwable {
         Signature signature = pjp.getSignature();
         Object proceed = null;
@@ -29,11 +29,11 @@ public class DebugLoggerAop {
         log.debug("[{}] START >>>>> [{}]",declaringTypeName,pjp.getArgs());
         try {
             proceed = pjp.proceed();
+            log.debug("[{}] END <<<<< [{}]",declaringTypeName,proceed);
+            return proceed;
         } catch (Exception e) {
             log.error("[{}] ERROR XXXXX ",declaringTypeName, e);
             throw e;
         }
-        log.debug("[{}] END <<<<< [{}]",declaringTypeName,proceed);
-        return proceed;
     }
 }

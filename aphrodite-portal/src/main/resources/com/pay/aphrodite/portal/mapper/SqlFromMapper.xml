@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pay.aphrodite.portal.dao.SqlFromDao">
+  <resultMap id="BaseResultMap" type="com.pay.aphrodite.model.entity.SqlFrom">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="OPTIMISTIC" jdbcType="INTEGER" property="optimistic" />
+    <result column="TABLE_NAME" jdbcType="VARCHAR" property="tableName" />
+    <result column="ALIAS" jdbcType="VARCHAR" property="alias" />
+    <result column="SELECT_ID" jdbcType="INTEGER" property="selectId" />
+    <result column="SQL_OBJECT_TYPE" jdbcType="VARCHAR" property="sqlObjectType" />
+    <result column="OWNER" jdbcType="VARCHAR" property="owner" />
+    <result column="JOIN_TYPE" jdbcType="VARCHAR" property="joinType" />
+    <result column="NEXT_ID" jdbcType="INTEGER" property="nextId" />
+    <result column="SUB_QUERY_ID" jdbcType="INTEGER" property="subQueryId" />
+    <result column="LEFT_OWNER" jdbcType="VARCHAR" property="leftOwner" />
+    <result column="RIGHT_OWNER" jdbcType="VARCHAR" property="rightOwner" />
+    <result column="LEFT_ELEMENT" jdbcType="VARCHAR" property="leftElement" />
+    <result column="RIGHT_ELEMENT" jdbcType="VARCHAR" property="rightElement" />
+    <result column="SYMBOL" jdbcType="VARCHAR" property="symbol" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, CREATE_TIME, UPDATE_TIME, OPTIMISTIC, TABLE_NAME, ALIAS, SELECT_ID, SQL_OBJECT_TYPE, 
+    OWNER, JOIN_TYPE, NEXT_ID, SUB_QUERY_ID, LEFT_OWNER, RIGHT_OWNER, LEFT_ELEMENT, RIGHT_ELEMENT, 
+    SYMBOL
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SQL_FROM
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from SQL_FROM
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pay.aphrodite.model.entity.SqlFrom">
+    insert into SQL_FROM (ID, CREATE_TIME, UPDATE_TIME, 
+      OPTIMISTIC, TABLE_NAME, ALIAS, 
+      SELECT_ID, SQL_OBJECT_TYPE, OWNER, 
+      JOIN_TYPE, NEXT_ID, SUB_QUERY_ID, 
+      LEFT_OWNER, RIGHT_OWNER, LEFT_ELEMENT, 
+      RIGHT_ELEMENT, SYMBOL)
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{optimistic,jdbcType=INTEGER}, #{tableName,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
+      #{selectId,jdbcType=INTEGER}, #{sqlObjectType,jdbcType=VARCHAR}, #{owner,jdbcType=VARCHAR}, 
+      #{joinType,jdbcType=VARCHAR}, #{nextId,jdbcType=INTEGER}, #{subQueryId,jdbcType=INTEGER}, 
+      #{leftOwner,jdbcType=VARCHAR}, #{rightOwner,jdbcType=VARCHAR}, #{leftElement,jdbcType=VARCHAR}, 
+      #{rightElement,jdbcType=VARCHAR}, #{symbol,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pay.aphrodite.model.entity.SqlFrom">
+    insert into SQL_FROM
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="optimistic != null">
+        OPTIMISTIC,
+      </if>
+      <if test="tableName != null">
+        TABLE_NAME,
+      </if>
+      <if test="alias != null">
+        ALIAS,
+      </if>
+      <if test="selectId != null">
+        SELECT_ID,
+      </if>
+      <if test="sqlObjectType != null">
+        SQL_OBJECT_TYPE,
+      </if>
+      <if test="owner != null">
+        OWNER,
+      </if>
+      <if test="joinType != null">
+        JOIN_TYPE,
+      </if>
+      <if test="nextId != null">
+        NEXT_ID,
+      </if>
+      <if test="subQueryId != null">
+        SUB_QUERY_ID,
+      </if>
+      <if test="leftOwner != null">
+        LEFT_OWNER,
+      </if>
+      <if test="rightOwner != null">
+        RIGHT_OWNER,
+      </if>
+      <if test="leftElement != null">
+        LEFT_ELEMENT,
+      </if>
+      <if test="rightElement != null">
+        RIGHT_ELEMENT,
+      </if>
+      <if test="symbol != null">
+        SYMBOL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="optimistic != null">
+        #{optimistic,jdbcType=INTEGER},
+      </if>
+      <if test="tableName != null">
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="selectId != null">
+        #{selectId,jdbcType=INTEGER},
+      </if>
+      <if test="sqlObjectType != null">
+        #{sqlObjectType,jdbcType=VARCHAR},
+      </if>
+      <if test="owner != null">
+        #{owner,jdbcType=VARCHAR},
+      </if>
+      <if test="joinType != null">
+        #{joinType,jdbcType=VARCHAR},
+      </if>
+      <if test="nextId != null">
+        #{nextId,jdbcType=INTEGER},
+      </if>
+      <if test="subQueryId != null">
+        #{subQueryId,jdbcType=INTEGER},
+      </if>
+      <if test="leftOwner != null">
+        #{leftOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="rightOwner != null">
+        #{rightOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="leftElement != null">
+        #{leftElement,jdbcType=VARCHAR},
+      </if>
+      <if test="rightElement != null">
+        #{rightElement,jdbcType=VARCHAR},
+      </if>
+      <if test="symbol != null">
+        #{symbol,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pay.aphrodite.model.entity.SqlFrom">
+    update SQL_FROM
+    <set>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="optimistic != null">
+        OPTIMISTIC = #{optimistic,jdbcType=INTEGER},
+      </if>
+      <if test="tableName != null">
+        TABLE_NAME = #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        ALIAS = #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="selectId != null">
+        SELECT_ID = #{selectId,jdbcType=INTEGER},
+      </if>
+      <if test="sqlObjectType != null">
+        SQL_OBJECT_TYPE = #{sqlObjectType,jdbcType=VARCHAR},
+      </if>
+      <if test="owner != null">
+        OWNER = #{owner,jdbcType=VARCHAR},
+      </if>
+      <if test="joinType != null">
+        JOIN_TYPE = #{joinType,jdbcType=VARCHAR},
+      </if>
+      <if test="nextId != null">
+        NEXT_ID = #{nextId,jdbcType=INTEGER},
+      </if>
+      <if test="subQueryId != null">
+        SUB_QUERY_ID = #{subQueryId,jdbcType=INTEGER},
+      </if>
+      <if test="leftOwner != null">
+        LEFT_OWNER = #{leftOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="rightOwner != null">
+        RIGHT_OWNER = #{rightOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="leftElement != null">
+        LEFT_ELEMENT = #{leftElement,jdbcType=VARCHAR},
+      </if>
+      <if test="rightElement != null">
+        RIGHT_ELEMENT = #{rightElement,jdbcType=VARCHAR},
+      </if>
+      <if test="symbol != null">
+        SYMBOL = #{symbol,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pay.aphrodite.model.entity.SqlFrom">
+    update SQL_FROM
+    set CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      OPTIMISTIC = #{optimistic,jdbcType=INTEGER},
+      TABLE_NAME = #{tableName,jdbcType=VARCHAR},
+      ALIAS = #{alias,jdbcType=VARCHAR},
+      SELECT_ID = #{selectId,jdbcType=INTEGER},
+      SQL_OBJECT_TYPE = #{sqlObjectType,jdbcType=VARCHAR},
+      OWNER = #{owner,jdbcType=VARCHAR},
+      JOIN_TYPE = #{joinType,jdbcType=VARCHAR},
+      NEXT_ID = #{nextId,jdbcType=INTEGER},
+      SUB_QUERY_ID = #{subQueryId,jdbcType=INTEGER},
+      LEFT_OWNER = #{leftOwner,jdbcType=VARCHAR},
+      RIGHT_OWNER = #{rightOwner,jdbcType=VARCHAR},
+      LEFT_ELEMENT = #{leftElement,jdbcType=VARCHAR},
+      RIGHT_ELEMENT = #{rightElement,jdbcType=VARCHAR},
+      SYMBOL = #{symbol,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

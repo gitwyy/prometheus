@@ -30,7 +30,7 @@ public class MysqlDataSource {
     private static final Logger log = LoggerFactory.getLogger(MysqlDataSource.class);
 
     public static final String MAPPER_LOCATION = "classpath:com/pay/aphrodite/query/mapper/mysql/*.xml";
-    public static final String PACKAGE = "com.pay.aphrodite.query.mapper.mysql";
+    public static final String PACKAGE = "com.pay.aphrodite.query.dao.mysql";
 
     @Value("${mysql.url}")
     private String mysqlUrl;

@@ -1,15 +1,15 @@
 package com.pay.aphrodite.query.controller;
 
 
+import com.pay.aphrodite.model.result.ResultBody;
+import com.pay.aphrodite.model.result.ResultCode;
 import com.pay.aphrodite.query.service.HqlService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StopWatch;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -20,11 +20,10 @@ import java.util.Map;
  * @Date: 2018-03-30 18:37
  * @Version: 1.0
  * @Description: 进行 Hive 查询的入口
- *
  **/
 
 @SuppressWarnings("ALL")
-@Controller
+@RestController
 @RequestMapping("/hive")
 public class HiveController {
     private static final Logger logger = LoggerFactory.getLogger(HiveController.class);
@@ -42,19 +41,22 @@ public class HiveController {
      * @Description:
      * @Modifyby:yangyang.wang
      **/
-    @RequestMapping(value="/hql/query",method = RequestMethod.POST)
-    @ResponseBody
-    public String hqlQuery(String hql){
-        StopWatch sw = new StopWatch();
+    @PostMapping(value = "/hql/query")
+    @ResponseBody()
+    public ResultBody hqlQuery(String hql) {
+        StopWatch sw = new StopWatch(" query ");
+        sw.start();
         List<Map<String, String>> list = hqlService.select(hql);
 
-        list.forEach((m)->{m.entrySet().forEach((e)->{
-            logger.debug("result=[{}:{}]",e.getKey(),e.getValue());
-        });});
+        list.forEach((m) -> {
+            m.entrySet().forEach((e) -> {
+                logger.debug("result=[{}:{}]", e.getKey(), e.getValue());
+            });
+        });
         sw.stop();
 
         logger.debug(sw.prettyPrint());
-        return null;
+        return new ResultBody(ResultCode.OK);
     }
 
 
@@ -66,17 +68,17 @@ public class HiveController {
      * @Description: TODO
      * @Modifyby:babos
      **/
-    @RequestMapping(value="/hql/download",method = RequestMethod.POST)
+    @PostMapping(value = "/hql/download")
     @ResponseBody
-    public String hqlDownload(String hql,String path){
+    public ResultBody hqlDownload(String hql, String path, String task) {
         StopWatch sw = new StopWatch();
         sw.start("hqlDownload");
+        // 下载数据到本地目录
         List<Map<String, String>> list = hqlService.load(hql, path);
         sw.stop();
+        // 上传数据到LFS目录
+
         logger.debug(sw.prettyPrint());
-        list.forEach((m)->{m.entrySet().forEach((e)->{
-            logger.debug("result=[{}:{}]",e.getKey(),e.getValue());
-        });});
-        return null;
+        return new ResultBody(ResultCode.OK);
     }
 }

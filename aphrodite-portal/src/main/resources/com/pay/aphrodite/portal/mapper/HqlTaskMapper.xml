@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pay.aphrodite.portal.dao.HqlTaskDao">
+  <resultMap id="BaseResultMap" type="com.pay.aphrodite.model.entity.HqlTask">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="OPTIMISTIC" jdbcType="INTEGER" property="optimistic" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="HQL_PARAM" jdbcType="CHAR" property="hqlParam" />
+    <result column="FINAL_HQL" jdbcType="VARCHAR" property="finalHql" />
+    <result column="OPERATOR" jdbcType="VARCHAR" property="operator" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, OPTIMISTIC, CREATE_TIME, UPDATE_TIME, HQL_PARAM, FINAL_HQL, OPERATOR
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from HQL_TASK
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from HQL_TASK
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pay.aphrodite.model.entity.HqlTask">
+    insert into HQL_TASK (ID, OPTIMISTIC, CREATE_TIME, 
+      UPDATE_TIME, HQL_PARAM, FINAL_HQL, 
+      OPERATOR)
+    values (#{id,jdbcType=INTEGER}, #{optimistic,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{hqlParam,jdbcType=CHAR}, #{finalHql,jdbcType=VARCHAR}, 
+      #{operator,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pay.aphrodite.model.entity.HqlTask">
+    insert into HQL_TASK
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="optimistic != null">
+        OPTIMISTIC,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="hqlParam != null">
+        HQL_PARAM,
+      </if>
+      <if test="finalHql != null">
+        FINAL_HQL,
+      </if>
+      <if test="operator != null">
+        OPERATOR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="optimistic != null">
+        #{optimistic,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hqlParam != null">
+        #{hqlParam,jdbcType=CHAR},
+      </if>
+      <if test="finalHql != null">
+        #{finalHql,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pay.aphrodite.model.entity.HqlTask">
+    update HQL_TASK
+    <set>
+      <if test="optimistic != null">
+        OPTIMISTIC = #{optimistic,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hqlParam != null">
+        HQL_PARAM = #{hqlParam,jdbcType=CHAR},
+      </if>
+      <if test="finalHql != null">
+        FINAL_HQL = #{finalHql,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        OPERATOR = #{operator,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pay.aphrodite.model.entity.HqlTask">
+    update HQL_TASK
+    set OPTIMISTIC = #{optimistic,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      HQL_PARAM = #{hqlParam,jdbcType=CHAR},
+      FINAL_HQL = #{finalHql,jdbcType=VARCHAR},
+      OPERATOR = #{operator,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -52,7 +52,8 @@
 
 
         <!-- 数据表进行生成操作 schema:相当于库名; tableName:表名; domainObjectName:对应的DO -->
-        <table schema="aphrodite" tableName="SQL_EXPRESS" domainObjectName="SqlExpress"
+
+        <table schema="aphrodite" tableName="SQL_WHERE" domainObjectName="SqlWhere"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
@@ -63,26 +64,30 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
-        <table schema="aphrodite" tableName="SQL_SELECT" domainObjectName="SqlSelect"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
-        <table schema="aphrodite" tableName="SQL_SELECT_ITEM" domainObjectName="SqlSelectItem"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
-        <table schema="aphrodite" tableName="SQL_TABLE_SOURCE" domainObjectName="SqlTableSource"
+
+        <table schema="aphrodite" tableName="SQL_QUERY" domainObjectName="SqlQuery"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
 
-        <table schema="aphrodite" tableName="SQL_WHERE" domainObjectName="SqlWhere"
+        <table schema="aphrodite" tableName="SQL_SELECT" domainObjectName="SqlSelect"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
+
+        <table schema="aphrodite" tableName="HQL_LOG" domainObjectName="HqlLog"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+        <table schema="aphrodite" tableName="HQL_TASK" domainObjectName="HqlTask"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
     </context>
 </generatorConfiguration>

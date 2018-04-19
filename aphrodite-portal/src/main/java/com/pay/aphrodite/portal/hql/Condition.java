@@ -12,7 +12,20 @@ import com.pay.aphrodite.portal.hql.visitor.SqlVisitor;
  **/
 public class Condition extends SqlObject{
 
+    /* @Comment:  限制符 */
     private String symbol;
+
+    /* @Comment:  被约束元素 */
+    private String element;
+
+    /* @Comment:  约束左边 */
+    private Condition left;
+
+    /* @Comment:  约束右边 */
+    private Condition right;
+
+    public Condition() {
+    }
 
     @Override
     public String accept(SqlVisitor sqlVisitor) {
@@ -55,6 +68,33 @@ public class Condition extends SqlObject{
     @Override
     public Condition setSqlExpr(String sqlExpr) {
         super.setSqlExpr(sqlExpr);
+        return this;
+    }
+
+    public String getElement() {
+        return element;
+    }
+
+    public Condition setElement(String element) {
+        this.element = element;
+        return this;
+    }
+
+    public Condition getLeft() {
+        return left;
+    }
+
+    public Condition setLeft(Condition left) {
+        this.left = left;
+        return this;
+    }
+
+    public Condition getRight() {
+        return right;
+    }
+
+    public Condition setRight(Condition right) {
+        this.right = right;
         return this;
     }
 }
