@@ -1,12 +1,12 @@
-package com.pay.aphrodite.query.service.impl;
+package com.pay.aphrodite.core.service.impl;
 
+import com.pay.aphrodite.core.dao.mysql.HqlLogDao;
+import com.pay.aphrodite.core.service.HqlLogService;
 import com.pay.aphrodite.model.entity.HqlLog;
-import com.pay.aphrodite.query.dao.mysql.HqlLogDao;
-import com.pay.aphrodite.query.service.HqlLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.jdo.annotations.Transactional;
 
 /**
  * @ClassName:HqlLogServiceImpl
@@ -17,7 +17,7 @@ import javax.jdo.annotations.Transactional;
  *
  **/
 @Service
-public class HqlLogServiceImpl implements HqlLogService{
+public class HqlLogServiceImpl implements HqlLogService {
     @Autowired
     private HqlLogDao hqlLogDao;
 

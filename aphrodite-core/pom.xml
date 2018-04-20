@@ -50,6 +50,46 @@
 			<artifactId>tomcat-jdbc</artifactId>
 		</dependency>
 
+		<!-- hive driver -->
+		<dependency>
+			<groupId>org.apache.hive</groupId>
+			<artifactId>hive-jdbc</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>hbase-server</artifactId>
+					<groupId>org.apache.hbase</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slider-core</artifactId>
+					<groupId>org.apache.slider</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>hadoop-yarn-server-resourcemanager</artifactId>
+					<groupId>org.apache.hadoop</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>hbase-common</artifactId>
+					<groupId>org.apache.hbase</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>hbase-client</artifactId>
+					<groupId>org.apache.hbase</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>hbase-hadoop2-compat</artifactId>
+					<groupId>org.apache.hbase</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>hadoop-hdfs</artifactId>
+					<groupId>org.apache.hadoop</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>hbase-hadoop-compat</artifactId>
+					<groupId>org.apache.hbase</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
 		<dependency>

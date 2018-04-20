@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pay.aphrodite.core.dao.mysql.HqlTaskLogDao">
+  <resultMap id="BaseResultMap" type="com.pay.aphrodite.model.entity.HqlTaskLog">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="OPTIMISTIC" jdbcType="INTEGER" property="optimistic" />
+    <result column="OPERATOR" jdbcType="VARCHAR" property="operator" />
+    <result column="LFS_PATH" jdbcType="VARCHAR" property="lfsPath" />
+    <result column="TASK_STATUS" jdbcType="VARCHAR" property="taskStatus" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="STEP" jdbcType="INTEGER" property="step" />
+    <result column="TASK_NO" jdbcType="VARCHAR" property="taskNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, CREATE_TIME, OPTIMISTIC, OPERATOR, LFS_PATH, TASK_STATUS, REMARK, STEP, TASK_NO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from HQL_TASK_LOG
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.pay.aphrodite.model.entity.HqlTaskLog">
+    insert into HQL_TASK_LOG (ID, CREATE_TIME, OPTIMISTIC, 
+      OPERATOR, LFS_PATH, TASK_STATUS, 
+      REMARK, STEP, TASK_NO
+      )
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{optimistic,jdbcType=INTEGER}, 
+      #{operator,jdbcType=VARCHAR}, #{lfsPath,jdbcType=VARCHAR}, #{taskStatus,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{step,jdbcType=INTEGER}, #{taskNo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pay.aphrodite.model.entity.HqlTaskLog">
+    update HQL_TASK_LOG
+    <set>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="optimistic != null">
+        OPTIMISTIC = #{optimistic,jdbcType=INTEGER},
+      </if>
+      <if test="operator != null">
+        OPERATOR = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="lfsPath != null">
+        LFS_PATH = #{lfsPath,jdbcType=VARCHAR},
+      </if>
+      <if test="taskStatus != null">
+        TASK_STATUS = #{taskStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="step != null">
+        STEP = #{step,jdbcType=INTEGER},
+      </if>
+      <if test="taskNo != null">
+        TASK_NO = #{taskNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

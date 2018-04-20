@@ -1,4 +1,4 @@
-package com.pay.aphrodite.core.dao;
+package com.pay.aphrodite.core.dao.mysql;
 
 /**
  * @ClassName:DingDingLogDao

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pay.aphrodite.core.dao.mysql.HqlTaskDao">
+  <resultMap id="BaseResultMap" type="com.pay.aphrodite.model.entity.HqlTask">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="OPTIMISTIC" jdbcType="INTEGER" property="optimistic" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="HQL_PARAM" jdbcType="CHAR" property="hqlParam" />
+    <result column="FINAL_HQL" jdbcType="VARCHAR" property="finalHql" />
+    <result column="OPERATOR" jdbcType="VARCHAR" property="operator" />
+    <result column="TASK_NAME" jdbcType="VARCHAR" property="taskName" />
+    <result column="TASK_TYPE" jdbcType="VARCHAR" property="taskType" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="TASK_NO" jdbcType="VARCHAR" property="taskNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, OPTIMISTIC, CREATE_TIME, UPDATE_TIME, HQL_PARAM, FINAL_HQL, OPERATOR, TASK_NAME, 
+    TASK_TYPE, REMARK, TASK_NO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from HQL_TASK
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.pay.aphrodite.model.entity.HqlTask">
+    insert into HQL_TASK (OPTIMISTIC, CREATE_TIME,
+      UPDATE_TIME, HQL_PARAM, FINAL_HQL, 
+      OPERATOR, TASK_NAME, TASK_TYPE, 
+      REMARK, TASK_NO)
+    values (1, now(),
+      #{updateTime,jdbcType=TIMESTAMP}, #{hqlParam,jdbcType=CHAR}, #{finalHql,jdbcType=VARCHAR}, 
+      #{operator,jdbcType=VARCHAR}, #{taskName,jdbcType=VARCHAR}, #{taskType,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{taskNo,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pay.aphrodite.model.entity.HqlTask">
+    update HQL_TASK
+    <set>
+      <if test="optimistic != null">
+        OPTIMISTIC = OPTIMISTIC + 1,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = NOW(),
+      </if>
+      <if test="hqlParam != null">
+        HQL_PARAM = #{hqlParam,jdbcType=CHAR},
+      </if>
+      <if test="finalHql != null">
+        FINAL_HQL = #{finalHql,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        OPERATOR = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="taskName != null">
+        TASK_NAME = #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskType != null">
+        TASK_TYPE = #{taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="taskNo != null">
+        TASK_NO = #{taskNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -9,19 +9,22 @@ public class HqlLog {
 
     private Integer optimistic;
 
-    private String logContent;
+    private String logArgs;
 
     private String operator;
 
     private String remark;
 
+    private String logMethod;
+
     public HqlLog() {
     }
 
-    public HqlLog(String logContent, String operator, String remark) {
-        this.logContent = logContent;
+    public HqlLog(String logArgs, String operator, String remark,String logMethod) {
+        this.logArgs = logArgs;
         this.operator = operator;
         this.remark = remark;
+        this.logMethod = logMethod;
     }
 
     public Integer getId() {
@@ -48,12 +51,12 @@ public class HqlLog {
         this.optimistic = optimistic;
     }
 
-    public String getLogContent() {
-        return logContent;
+    public String getLogArgs() {
+        return logArgs;
     }
 
-    public void setLogContent(String logContent) {
-        this.logContent = logContent;
+    public void setLogArgs(String logArgs) {
+        this.logArgs = logArgs;
     }
 
     public String getOperator() {
@@ -72,15 +75,24 @@ public class HqlLog {
         this.remark = remark;
     }
 
+    public String getLogMethod() {
+        return logMethod;
+    }
+
+    public void setLogMethod(String logMethod) {
+        this.logMethod = logMethod;
+    }
+
     @Override
     public String toString() {
         return "HqlLog{" +
                 "id=" + id +
                 ", createTime=" + createTime +
                 ", optimistic=" + optimistic +
-                ", logContent='" + logContent + '\'' +
+                ", logArgs='" + logArgs + '\'' +
                 ", operator='" + operator + '\'' +
                 ", remark='" + remark + '\'' +
+                ", logMethod='" + logMethod + '\'' +
                 '}';
     }
 }

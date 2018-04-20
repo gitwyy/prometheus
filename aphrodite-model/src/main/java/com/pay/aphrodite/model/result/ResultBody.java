@@ -58,29 +58,37 @@ public class ResultBody {
         return code;
     }
 
-    public void setCode(String code) {
+    public ResultBody setCode(String code) {
         this.code = code;
+        return this;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public ResultBody setMessage(String message) {
         this.message = message;
+        return this;
     }
 
     public Object getResult() {
         return result;
     }
 
-    public void setResult(Object result) {
+    public ResultBody setResult(Object result) {
         this.result = result;
+        return this;
     }
 
-    public void setStatus(String status) { this.status = status; }
+    public ResultBody setStatus(String status) {
+        this.status = status;
+        return this;
+    }
 
-    public String getStatus() { return status; }
+    public String getStatus() {
+        return status;
+    }
 
     @Override
     public String toString() {

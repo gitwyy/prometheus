@@ -1,4 +1,6 @@
-package com.pay.aphrodite.query.service;
+package com.pay.aphrodite.core.service;
+
+import com.pay.aphrodite.model.entity.HqlTask;
 
 import java.util.List;
 import java.util.Map;
@@ -13,16 +15,6 @@ import java.util.Map;
  *
  **/
 public interface HqlService {
-    /**
-     * @Author: yangyang.wang
-     * @Date: 2018-03-30 19:43
-     * @Param: [hql] :
-     * @Return: long :
-     * @Description: 数据插入操作
-     * @Modifyby: yangyang.wang
-     **/
-    public long insert(String hql);
-
 
     /**
      * @Author: yangyang.wang
@@ -43,5 +35,6 @@ public interface HqlService {
      * @Description: 进行数据下载操作
      * @Modifyby: yangyang.wang
      **/
-    public List<Map<String, String>> load(String hql, String localPath);
+    public void load(HqlTask hqlTask);
+
 }

@@ -29,8 +29,8 @@ import javax.sql.DataSource;
 public class MysqlDataSource {
     private static final Logger log = LoggerFactory.getLogger(MysqlDataSource.class);
 
-    public static final String MAPPER_LOCATION = "classpath:com/pay/aphrodite/core/mapper/*.xml";
-    public static final String PACKAGE = "com.pay.aphrodite.core.mapper";
+    public static final String MAPPER_LOCATION = "classpath:com/pay/aphrodite/core/mapper/mysql/*.xml";
+    public static final String PACKAGE = "com.pay.aphrodite.core.dao.mysql";
 
     @Value("${mysql.url}")
     private String mysqlUrl;

@@ -35,18 +35,18 @@
         </javaTypeResolver>
 
         <!-- 数据表对应的model层  -->
-        <javaModelGenerator targetPackage="com.aphrodite.portal.model" targetProject="src/test/java">
+        <javaModelGenerator targetPackage="com.pay.aphrodite.model.entity" targetProject="src/test/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
         <!-- sql mapper 映射配置文件 -->
-        <sqlMapGenerator targetPackage="com.aphrodite.portal.dao.mysql"  targetProject="src/test/resources">
+        <sqlMapGenerator targetPackage="com.pay.aphrodite.core.mapper.mysql"  targetProject="src/test/resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
         <!-- mybatis中的mapper接口 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.aphrodite.portal.dao.mysql"  targetProject="src/test/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.pay.aphrodite.core.dao.mysql"  targetProject="src/test/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
@@ -88,6 +88,14 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
+
+
+        <table schema="aphrodite" tableName="HQL_TASK_LOG" domainObjectName="HqlTaskLog"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
 
     </context>
 </generatorConfiguration>

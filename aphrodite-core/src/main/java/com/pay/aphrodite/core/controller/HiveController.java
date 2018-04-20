@@ -1,15 +1,17 @@
-package com.pay.aphrodite.query.controller;
+package com.pay.aphrodite.core.controller;
 
 
+import com.pay.aphrodite.core.service.HqlService;
 import com.pay.aphrodite.model.result.ResultBody;
 import com.pay.aphrodite.model.result.ResultCode;
-import com.pay.aphrodite.query.service.HqlService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.util.StopWatch;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
@@ -22,7 +24,6 @@ import java.util.Map;
  * @Description: 进行 Hive 查询的入口
  **/
 
-@SuppressWarnings("ALL")
 @RestController
 @RequestMapping("/hive")
 public class HiveController {
@@ -42,7 +43,6 @@ public class HiveController {
      * @Modifyby:yangyang.wang
      **/
     @PostMapping(value = "/hql/query")
-    @ResponseBody()
     public ResultBody hqlQuery(String hql) {
         StopWatch sw = new StopWatch(" query ");
         sw.start();
@@ -50,13 +50,13 @@ public class HiveController {
 
         list.forEach((m) -> {
             m.entrySet().forEach((e) -> {
-                logger.debug("result=[{}:{}]", e.getKey(), e.getValue());
+                logger.debug(">>>>>>>>>>>>>>>>>>>>>result=[{}:{}]", e.getKey(), e.getValue());
             });
         });
         sw.stop();
 
         logger.debug(sw.prettyPrint());
-        return new ResultBody(ResultCode.OK);
+        return new ResultBody(ResultCode.OK).setResult(list);
     }
 
 
@@ -69,16 +69,9 @@ public class HiveController {
      * @Modifyby:babos
      **/
     @PostMapping(value = "/hql/download")
-    @ResponseBody
-    public ResultBody hqlDownload(String hql, String path, String task) {
-        StopWatch sw = new StopWatch();
-        sw.start("hqlDownload");
-        // 下载数据到本地目录
-        List<Map<String, String>> list = hqlService.load(hql, path);
-        sw.stop();
-        // 上传数据到LFS目录
-
-        logger.debug(sw.prettyPrint());
+    public ResultBody hqlDownload(@RequestParam("hql")String hql, @RequestParam("path")String path, @RequestParam("taskName")String taskName, @RequestParam("operator")String operator) {
+        // 处理文件下载逻辑
+        hqlService.load(hql, path);
         return new ResultBody(ResultCode.OK);
     }
 }

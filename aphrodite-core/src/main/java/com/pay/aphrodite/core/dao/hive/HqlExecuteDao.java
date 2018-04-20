@@ -1,4 +1,4 @@
-package com.pay.aphrodite.query.dao.hive;
+package com.pay.aphrodite.core.dao.hive;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -14,8 +14,6 @@ import java.util.Map;
  *
  **/
 public interface HqlExecuteDao {
-
-    public long insert(@Param("hql") String hql);
 
     public List<Map<String,String>> select(@Param("hql") String hql);
 

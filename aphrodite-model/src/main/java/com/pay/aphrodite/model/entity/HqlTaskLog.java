@@ -2,26 +2,22 @@ package com.pay.aphrodite.model.entity;
 
 import java.util.Date;
 
-public class HqlTask {
+public class HqlTaskLog {
     private Integer id;
-
-    private Integer optimistic;
 
     private Date createTime;
 
-    private Date updateTime;
-
-    private String hqlParam;
-
-    private String finalHql;
+    private Integer optimistic;
 
     private String operator;
 
-    private String taskName;
+    private String lfsPath;
 
-    private String taskType;
+    private String taskStatus;
 
     private String remark;
+
+    private Integer step;
 
     private String taskNo;
 
@@ -33,14 +29,6 @@ public class HqlTask {
         this.id = id;
     }
 
-    public Integer getOptimistic() {
-        return optimistic;
-    }
-
-    public void setOptimistic(Integer optimistic) {
-        this.optimistic = optimistic;
-    }
-
     public Date getCreateTime() {
         return createTime;
     }
@@ -49,28 +37,12 @@ public class HqlTask {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public Integer getOptimistic() {
+        return optimistic;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public String getHqlParam() {
-        return hqlParam;
-    }
-
-    public void setHqlParam(String hqlParam) {
-        this.hqlParam = hqlParam == null ? null : hqlParam.trim();
-    }
-
-    public String getFinalHql() {
-        return finalHql;
-    }
-
-    public void setFinalHql(String finalHql) {
-        this.finalHql = finalHql == null ? null : finalHql.trim();
+    public void setOptimistic(Integer optimistic) {
+        this.optimistic = optimistic;
     }
 
     public String getOperator() {
@@ -81,20 +53,20 @@ public class HqlTask {
         this.operator = operator == null ? null : operator.trim();
     }
 
-    public String getTaskName() {
-        return taskName;
+    public String getLfsPath() {
+        return lfsPath;
     }
 
-    public void setTaskName(String taskName) {
-        this.taskName = taskName == null ? null : taskName.trim();
+    public void setLfsPath(String lfsPath) {
+        this.lfsPath = lfsPath == null ? null : lfsPath.trim();
     }
 
-    public String getTaskType() {
-        return taskType;
+    public String getTaskStatus() {
+        return taskStatus;
     }
 
-    public void setTaskType(String taskType) {
-        this.taskType = taskType == null ? null : taskType.trim();
+    public void setTaskStatus(String taskStatus) {
+        this.taskStatus = taskStatus == null ? null : taskStatus.trim();
     }
 
     public String getRemark() {
@@ -103,6 +75,14 @@ public class HqlTask {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+
+    public Integer getStep() {
+        return step;
+    }
+
+    public void setStep(Integer step) {
+        this.step = step;
     }
 
     public String getTaskNo() {
@@ -120,15 +100,13 @@ public class HqlTask {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", optimistic=").append(optimistic);
         sb.append(", createTime=").append(createTime);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", hqlParam=").append(hqlParam);
-        sb.append(", finalHql=").append(finalHql);
+        sb.append(", optimistic=").append(optimistic);
         sb.append(", operator=").append(operator);
-        sb.append(", taskName=").append(taskName);
-        sb.append(", taskType=").append(taskType);
+        sb.append(", lfsPath=").append(lfsPath);
+        sb.append(", taskStatus=").append(taskStatus);
         sb.append(", remark=").append(remark);
+        sb.append(", step=").append(step);
         sb.append(", taskNo=").append(taskNo);
         sb.append("]");
         return sb.toString();

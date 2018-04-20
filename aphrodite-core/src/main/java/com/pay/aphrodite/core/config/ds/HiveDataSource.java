@@ -1,4 +1,4 @@
-package com.pay.aphrodite.query.config.ds;
+package com.pay.aphrodite.core.config.ds;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 
@@ -29,9 +28,9 @@ import javax.sql.DataSource;
 public class HiveDataSource {
     private Logger log = LoggerFactory.getLogger(HiveDataSource.class);
     /* @Comment: mybatis 配置文件扫描路径 */
-    public static final String MAPPER_LOCATION = "classpath:com/pay/aphrodite/query/mapper/hive/*.xml";
+    public static final String MAPPER_LOCATION = "classpath:com/pay/aphrodite/core/mapper/hive/*.xml";
     /* @Comment: mybatis mapper 包扫描 */
-    public static final String PACKAGE = "com.pay.aphrodite.query.dao.hive";
+    public static final String PACKAGE = "com.pay.aphrodite.core.dao.hive";
 
     @Value("${hive.url}")
     private String hiveUrl;
