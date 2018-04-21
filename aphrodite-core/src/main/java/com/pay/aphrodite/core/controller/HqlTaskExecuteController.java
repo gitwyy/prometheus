@@ -1,14 +1,12 @@
 package com.pay.aphrodite.core.controller;
 
 import com.pay.aphrodite.core.service.HqlTaskManageService;
-import com.pay.aphrodite.core.service.HqlTaskService;
 import com.pay.aphrodite.model.entity.HqlTask;
 import com.pay.aphrodite.model.result.ResultBody;
 import com.pay.aphrodite.model.result.ResultCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,9 +23,9 @@ import java.util.Map;
  **/
 @RestController
 @RequestMapping("/hive/task/manage")
-public class HqlTaskMangeController {
+public class HqlTaskExecuteController {
 
-    private static final Logger logger = LoggerFactory.getLogger(HqlTaskMangeController.class);
+    private static final Logger logger = LoggerFactory.getLogger(HqlTaskExecuteController.class);
 
 
     /* @Comment: 处理Hql */

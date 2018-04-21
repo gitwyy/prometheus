@@ -1,4 +1,4 @@
-package com.pay.aphrodite.core.dao.mysql;
+package com.pay.aphrodite.portal.dao;
 
 import com.pay.aphrodite.model.entity.HqlTask;
 

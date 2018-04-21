@@ -1,4 +1,4 @@
-package com.pay.aphrodite.core.service;
+package com.pay.aphrodite.portal.service;
 
 import com.pay.aphrodite.model.entity.HqlTask;
 

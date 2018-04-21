@@ -1,8 +1,8 @@
-package com.pay.aphrodite.core.service.impl;
+package com.pay.aphrodite.portal.service.impl;
 
-import com.pay.aphrodite.core.dao.mysql.HqlTaskDao;
-import com.pay.aphrodite.core.service.HqlTaskService;
 import com.pay.aphrodite.model.entity.HqlTask;
+import com.pay.aphrodite.portal.dao.HqlTaskDao;
+import com.pay.aphrodite.portal.service.HqlTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

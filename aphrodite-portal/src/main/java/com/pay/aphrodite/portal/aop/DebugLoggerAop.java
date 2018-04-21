@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 public class DebugLoggerAop {
     private Logger log = LoggerFactory.getLogger("debug-info");
 
-    @Around("execution(public * com.pay.aphrodite.portal.service.*.*(..))")
+    @Around("execution(public * com.pay.aphrodite.portal.service.impl.*.*(..))")
     public Object aroundAdvice(ProceedingJoinPoint pjp) throws Throwable {
         Signature signature = pjp.getSignature();
         Object proceed = null;
