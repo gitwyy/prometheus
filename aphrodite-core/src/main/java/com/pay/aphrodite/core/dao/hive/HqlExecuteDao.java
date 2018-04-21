@@ -17,5 +17,5 @@ public interface HqlExecuteDao {
 
     public List<Map<String,String>> select(@Param("hql") String hql);
 
-    public List<Map<String,String>> load(@Param("hql")String hql,@Param("path") String path);
+    public void load(@Param("hql")String hql,@Param("path") String path);
 }

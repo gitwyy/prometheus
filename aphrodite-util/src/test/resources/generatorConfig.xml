@@ -97,5 +97,11 @@
         </table>
 
 
+        <table schema="aphrodite" tableName="HQL_TASK_MANAGE" domainObjectName="HqlTaskManage"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
     </context>
 </generatorConfiguration>

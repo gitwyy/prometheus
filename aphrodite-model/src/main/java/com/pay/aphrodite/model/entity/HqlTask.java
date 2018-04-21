@@ -2,12 +2,7 @@ package com.pay.aphrodite.model.entity;
 
 import java.util.Date;
 
-public class HqlTask {
-    private Integer id;
-
-    private Integer optimistic;
-
-    private Date createTime;
+public class HqlTask extends BaseEntity<HqlTask>{
 
     private Date updateTime;
 
@@ -15,122 +10,82 @@ public class HqlTask {
 
     private String finalHql;
 
-    private String operator;
-
     private String taskName;
 
     private String taskType;
 
-    private String remark;
-
     private String taskNo;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getOptimistic() {
-        return optimistic;
-    }
-
-    public void setOptimistic(Integer optimistic) {
-        this.optimistic = optimistic;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 
     public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public HqlTask setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+        return this;
     }
 
     public String getHqlParam() {
         return hqlParam;
     }
 
-    public void setHqlParam(String hqlParam) {
-        this.hqlParam = hqlParam == null ? null : hqlParam.trim();
+    public HqlTask setHqlParam(String hqlParam) {
+        this.hqlParam = hqlParam;
+        return this;
     }
 
     public String getFinalHql() {
         return finalHql;
     }
 
-    public void setFinalHql(String finalHql) {
-        this.finalHql = finalHql == null ? null : finalHql.trim();
-    }
-
-    public String getOperator() {
-        return operator;
-    }
-
-    public void setOperator(String operator) {
-        this.operator = operator == null ? null : operator.trim();
+    public HqlTask setFinalHql(String finalHql) {
+        this.finalHql = finalHql;
+        return this;
     }
 
     public String getTaskName() {
         return taskName;
     }
 
-    public void setTaskName(String taskName) {
-        this.taskName = taskName == null ? null : taskName.trim();
+    public HqlTask setTaskName(String taskName) {
+        this.taskName = taskName;
+        return this;
     }
 
     public String getTaskType() {
         return taskType;
     }
 
-    public void setTaskType(String taskType) {
-        this.taskType = taskType == null ? null : taskType.trim();
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+    public HqlTask setTaskType(String taskType) {
+        this.taskType = taskType;
+        return this;
     }
 
     public String getTaskNo() {
         return taskNo;
     }
 
-    public void setTaskNo(String taskNo) {
-        this.taskNo = taskNo == null ? null : taskNo.trim();
+    public HqlTask setTaskNo(String taskNo) {
+        this.taskNo = taskNo;
+        return this;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
+        final StringBuilder sb = new StringBuilder("HqlTask{");
+        sb.append("updateTime=").append(updateTime);
+        sb.append(", hqlParam='").append(hqlParam).append('\'');
+        sb.append(", finalHql='").append(finalHql).append('\'');
+        sb.append(", taskName='").append(taskName).append('\'');
+        sb.append(", taskType='").append(taskType).append('\'');
+        sb.append(", taskNo='").append(taskNo).append('\'');
         sb.append(", id=").append(id);
-        sb.append(", optimistic=").append(optimistic);
         sb.append(", createTime=").append(createTime);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", hqlParam=").append(hqlParam);
-        sb.append(", finalHql=").append(finalHql);
-        sb.append(", operator=").append(operator);
-        sb.append(", taskName=").append(taskName);
-        sb.append(", taskType=").append(taskType);
-        sb.append(", remark=").append(remark);
-        sb.append(", taskNo=").append(taskNo);
-        sb.append("]");
+        sb.append(", optimistic='").append(optimistic).append('\'');
+        sb.append(", remark='").append(remark).append('\'');
+        sb.append(", operator='").append(operator).append('\'');
+        sb.append('}');
         return sb.toString();
     }
 }

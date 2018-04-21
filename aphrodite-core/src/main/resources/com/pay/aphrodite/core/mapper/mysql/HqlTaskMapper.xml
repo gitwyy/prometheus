@@ -24,7 +24,7 @@
     from HQL_TASK
     where ID = #{id,jdbcType=INTEGER}
   </select>
-  <insert id="insert" parameterType="com.pay.aphrodite.model.entity.HqlTask">
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.pay.aphrodite.model.entity.HqlTask">
     insert into HQL_TASK (OPTIMISTIC, CREATE_TIME,
       UPDATE_TIME, HQL_PARAM, FINAL_HQL, 
       OPERATOR, TASK_NAME, TASK_TYPE, 

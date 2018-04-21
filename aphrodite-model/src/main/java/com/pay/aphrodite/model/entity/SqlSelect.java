@@ -2,80 +2,40 @@ package com.pay.aphrodite.model.entity;
 
 import java.util.Date;
 
-public class SqlSelect {
-    private Integer id;
-
-    private Date createTime;
-
+public class SqlSelect extends BaseEntity<SqlSelect>{
     private Date updateTime;
 
-    private Integer optimistic;
-
-    private String operator;
-
     private String sqlExpress;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 
     public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public SqlSelect setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public Integer getOptimistic() {
-        return optimistic;
-    }
-
-    public void setOptimistic(Integer optimistic) {
-        this.optimistic = optimistic;
-    }
-
-    public String getOperator() {
-        return operator;
-    }
-
-    public void setOperator(String operator) {
-        this.operator = operator == null ? null : operator.trim();
+        return this;
     }
 
     public String getSqlExpress() {
         return sqlExpress;
     }
 
-    public void setSqlExpress(String sqlExpress) {
-        this.sqlExpress = sqlExpress == null ? null : sqlExpress.trim();
+    public SqlSelect setSqlExpress(String sqlExpress) {
+        this.sqlExpress = sqlExpress;
+        return this;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
+        final StringBuilder sb = new StringBuilder("SqlSelect{");
+        sb.append("updateTime=").append(updateTime);
+        sb.append(", sqlExpress='").append(sqlExpress).append('\'');
         sb.append(", id=").append(id);
         sb.append(", createTime=").append(createTime);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", optimistic=").append(optimistic);
-        sb.append(", operator=").append(operator);
-        sb.append(", sqlExpress=").append(sqlExpress);
-        sb.append("]");
+        sb.append(", optimistic='").append(optimistic).append('\'');
+        sb.append(", remark='").append(remark).append('\'');
+        sb.append(", operator='").append(operator).append('\'');
+        sb.append('}');
         return sb.toString();
     }
 }

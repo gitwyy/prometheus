@@ -2,16 +2,8 @@ package com.pay.aphrodite.model.entity;
 
 import java.util.Date;
 
-public class SqlQuery {
-    private Integer id;
-
-    private Date createTime;
-
+public class SqlQuery extends BaseEntity<SqlQuery>{
     private Date updateTime;
-
-    private Integer optimistic;
-
-    private String operator;
 
     private String columnName;
 
@@ -25,112 +17,86 @@ public class SqlQuery {
 
     private Integer subQueryId;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
     public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public SqlQuery setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public Integer getOptimistic() {
-        return optimistic;
-    }
-
-    public void setOptimistic(Integer optimistic) {
-        this.optimistic = optimistic;
-    }
-
-    public String getOperator() {
-        return operator;
-    }
-
-    public void setOperator(String operator) {
-        this.operator = operator == null ? null : operator.trim();
+        return this;
     }
 
     public String getColumnName() {
         return columnName;
     }
 
-    public void setColumnName(String columnName) {
-        this.columnName = columnName == null ? null : columnName.trim();
+    public SqlQuery setColumnName(String columnName) {
+        this.columnName = columnName;
+        return this;
     }
 
     public String getAlias() {
         return alias;
     }
 
-    public void setAlias(String alias) {
-        this.alias = alias == null ? null : alias.trim();
+    public SqlQuery setAlias(String alias) {
+        this.alias = alias;
+        return this;
     }
 
     public Integer getSelectId() {
         return selectId;
     }
 
-    public void setSelectId(Integer selectId) {
+    public SqlQuery setSelectId(Integer selectId) {
         this.selectId = selectId;
+        return this;
     }
 
     public String getOwner() {
         return owner;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner == null ? null : owner.trim();
+    public SqlQuery setOwner(String owner) {
+        this.owner = owner;
+        return this;
     }
 
     public String getSqlObjectType() {
         return sqlObjectType;
     }
 
-    public void setSqlObjectType(String sqlObjectType) {
-        this.sqlObjectType = sqlObjectType == null ? null : sqlObjectType.trim();
+    public SqlQuery setSqlObjectType(String sqlObjectType) {
+        this.sqlObjectType = sqlObjectType;
+        return this;
     }
 
     public Integer getSubQueryId() {
         return subQueryId;
     }
 
-    public void setSubQueryId(Integer subQueryId) {
+    public SqlQuery setSubQueryId(Integer subQueryId) {
         this.subQueryId = subQueryId;
+        return this;
     }
+
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
+        final StringBuilder sb = new StringBuilder("SqlQuery{");
+        sb.append("updateTime=").append(updateTime);
+        sb.append(", columnName='").append(columnName).append('\'');
+        sb.append(", alias='").append(alias).append('\'');
+        sb.append(", selectId=").append(selectId);
+        sb.append(", owner='").append(owner).append('\'');
+        sb.append(", sqlObjectType='").append(sqlObjectType).append('\'');
+        sb.append(", subQueryId=").append(subQueryId);
         sb.append(", id=").append(id);
         sb.append(", createTime=").append(createTime);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", optimistic=").append(optimistic);
-        sb.append(", operator=").append(operator);
-        sb.append(", columnName=").append(columnName);
-        sb.append(", alias=").append(alias);
-        sb.append(", selectId=").append(selectId);
-        sb.append(", owner=").append(owner);
-        sb.append(", sqlObjectType=").append(sqlObjectType);
-        sb.append(", subQueryId=").append(subQueryId);
-        sb.append("]");
+        sb.append(", optimistic='").append(optimistic).append('\'');
+        sb.append(", remark='").append(remark).append('\'');
+        sb.append(", operator='").append(operator).append('\'');
+        sb.append('}');
         return sb.toString();
     }
 }

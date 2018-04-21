@@ -30,7 +30,7 @@ public class HqlLogAspect {
     @Autowired
     private HqlLogService hqlLogService;
 
-    @Around(value = "execution(public * com.pay.aphrodite.core.service.impl.HqlServiceImpl.*(..))")
+    @Around(value = "execution(public * com.pay.aphrodite.core.service.impl.HqlTaskManageServiceImpl.*(..))")
     public Object aroundHql(ProceedingJoinPoint pjp) throws Throwable {
         Object proceed = null;
         String declaringTypeName = pjp.getSignature().getDeclaringTypeName();
@@ -58,7 +58,7 @@ public class HqlLogAspect {
                         StringJoiner sj = new StringJoiner("];[", "{[", "]}");
                         return sj.add(x).add(y).toString();
                     }).get();
-            hqlLogService.insert(new HqlLog(args, "SYSTEM", result.toString(),method));
+            hqlLogService.insert(new HqlLog().setLogArgs(args).setRemark(result.toString()).setLogMethod(method).setOperator("SYSTEM"));
         } catch (Throwable throwable) {
             log.error("insert log error ", throwable);
         }

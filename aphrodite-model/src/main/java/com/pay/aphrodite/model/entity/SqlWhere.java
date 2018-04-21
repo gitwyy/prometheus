@@ -2,14 +2,9 @@ package com.pay.aphrodite.model.entity;
 
 import java.util.Date;
 
-public class SqlWhere {
-    private Integer id;
-
-    private Date createTime;
+public class SqlWhere extends BaseEntity<SqlWhere>{
 
     private Date updateTime;
-
-    private Integer optimistic;
 
     private String sqlObjectType;
 
@@ -25,112 +20,95 @@ public class SqlWhere {
 
     private String symbol;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
     public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public SqlWhere setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public Integer getOptimistic() {
-        return optimistic;
-    }
-
-    public void setOptimistic(Integer optimistic) {
-        this.optimistic = optimistic;
+        return this;
     }
 
     public String getSqlObjectType() {
         return sqlObjectType;
     }
 
-    public void setSqlObjectType(String sqlObjectType) {
-        this.sqlObjectType = sqlObjectType == null ? null : sqlObjectType.trim();
+    public SqlWhere setSqlObjectType(String sqlObjectType) {
+        this.sqlObjectType = sqlObjectType;
+        return this;
     }
 
     public Integer getSelectId() {
         return selectId;
     }
 
-    public void setSelectId(Integer selectId) {
+    public SqlWhere setSelectId(Integer selectId) {
         this.selectId = selectId;
+        return this;
     }
 
     public String getLeftOwner() {
         return leftOwner;
     }
 
-    public void setLeftOwner(String leftOwner) {
-        this.leftOwner = leftOwner == null ? null : leftOwner.trim();
+    public SqlWhere setLeftOwner(String leftOwner) {
+        this.leftOwner = leftOwner;
+        return this;
     }
 
     public String getLeftElement() {
         return leftElement;
     }
 
-    public void setLeftElement(String leftElement) {
-        this.leftElement = leftElement == null ? null : leftElement.trim();
+    public SqlWhere setLeftElement(String leftElement) {
+        this.leftElement = leftElement;
+        return this;
     }
 
     public String getRightOwner() {
         return rightOwner;
     }
 
-    public void setRightOwner(String rightOwner) {
-        this.rightOwner = rightOwner == null ? null : rightOwner.trim();
+    public SqlWhere setRightOwner(String rightOwner) {
+        this.rightOwner = rightOwner;
+        return this;
     }
 
     public String getRightElement() {
         return rightElement;
     }
 
-    public void setRightElement(String rightElement) {
-        this.rightElement = rightElement == null ? null : rightElement.trim();
+    public SqlWhere setRightElement(String rightElement) {
+        this.rightElement = rightElement;
+        return this;
     }
 
     public String getSymbol() {
         return symbol;
     }
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol == null ? null : symbol.trim();
+    public SqlWhere setSymbol(String symbol) {
+        this.symbol = symbol;
+        return this;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
+        final StringBuilder sb = new StringBuilder("SqlWhere{");
+        sb.append("updateTime=").append(updateTime);
+        sb.append(", sqlObjectType='").append(sqlObjectType).append('\'');
+        sb.append(", selectId=").append(selectId);
+        sb.append(", leftOwner='").append(leftOwner).append('\'');
+        sb.append(", leftElement='").append(leftElement).append('\'');
+        sb.append(", rightOwner='").append(rightOwner).append('\'');
+        sb.append(", rightElement='").append(rightElement).append('\'');
+        sb.append(", symbol='").append(symbol).append('\'');
         sb.append(", id=").append(id);
         sb.append(", createTime=").append(createTime);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", optimistic=").append(optimistic);
-        sb.append(", sqlObjectType=").append(sqlObjectType);
-        sb.append(", selectId=").append(selectId);
-        sb.append(", leftOwner=").append(leftOwner);
-        sb.append(", leftElement=").append(leftElement);
-        sb.append(", rightOwner=").append(rightOwner);
-        sb.append(", rightElement=").append(rightElement);
-        sb.append(", symbol=").append(symbol);
-        sb.append("]");
+        sb.append(", optimistic='").append(optimistic).append('\'');
+        sb.append(", remark='").append(remark).append('\'');
+        sb.append(", operator='").append(operator).append('\'');
+        sb.append('}');
         return sb.toString();
     }
 }

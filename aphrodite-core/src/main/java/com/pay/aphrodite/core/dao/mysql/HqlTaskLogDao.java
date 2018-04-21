@@ -4,7 +4,7 @@ import com.pay.aphrodite.model.entity.HqlTaskLog;
 
 public interface HqlTaskLogDao {
 
-    int insert(HqlTaskLog record);
+    Long insert(HqlTaskLog record);
 
     HqlTaskLog selectByPrimaryKey(Integer id);
 

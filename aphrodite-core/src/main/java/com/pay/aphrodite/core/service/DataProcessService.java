@@ -1,5 +1,9 @@
 package com.pay.aphrodite.core.service;
 
+import org.springframework.stereotype.Service;
+
+import java.io.File;
+
 /**
  * @ClassName:DataProcessService
  * @Author: yangyang.wang
@@ -10,5 +14,10 @@ package com.pay.aphrodite.core.service;
  *
  **/
 public interface DataProcessService {
-    void toExcel(String path);
+
+    /* @Comment: 处理数据 */
+    File processData(String localFile);
+
+    /* @Comment: 上传数据到 lfs */
+    void uploadData(String localFile, String lfsFile);
 }

@@ -2,14 +2,9 @@ package com.pay.aphrodite.model.entity;
 
 import java.util.Date;
 
-public class SqlFrom {
-    private Integer id;
-
-    private Date createTime;
+public class SqlFrom extends BaseEntity<SqlFrom>{
 
     private Date updateTime;
-
-    private Integer optimistic;
 
     private String tableName;
 
@@ -37,166 +32,155 @@ public class SqlFrom {
 
     private String symbol;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
     public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public SqlFrom setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public Integer getOptimistic() {
-        return optimistic;
-    }
-
-    public void setOptimistic(Integer optimistic) {
-        this.optimistic = optimistic;
+        return this;
     }
 
     public String getTableName() {
         return tableName;
     }
 
-    public void setTableName(String tableName) {
-        this.tableName = tableName == null ? null : tableName.trim();
+    public SqlFrom setTableName(String tableName) {
+        this.tableName = tableName;
+        return this;
     }
 
     public String getAlias() {
         return alias;
     }
 
-    public void setAlias(String alias) {
-        this.alias = alias == null ? null : alias.trim();
+    public SqlFrom setAlias(String alias) {
+        this.alias = alias;
+        return this;
     }
 
     public Integer getSelectId() {
         return selectId;
     }
 
-    public void setSelectId(Integer selectId) {
+    public SqlFrom setSelectId(Integer selectId) {
         this.selectId = selectId;
+        return this;
     }
 
     public String getSqlObjectType() {
         return sqlObjectType;
     }
 
-    public void setSqlObjectType(String sqlObjectType) {
-        this.sqlObjectType = sqlObjectType == null ? null : sqlObjectType.trim();
+    public SqlFrom setSqlObjectType(String sqlObjectType) {
+        this.sqlObjectType = sqlObjectType;
+        return this;
     }
 
     public String getOwner() {
         return owner;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner == null ? null : owner.trim();
+    public SqlFrom setOwner(String owner) {
+        this.owner = owner;
+        return this;
     }
 
     public String getJoinType() {
         return joinType;
     }
 
-    public void setJoinType(String joinType) {
-        this.joinType = joinType == null ? null : joinType.trim();
+    public SqlFrom setJoinType(String joinType) {
+        this.joinType = joinType;
+        return this;
     }
 
     public Integer getNextId() {
         return nextId;
     }
 
-    public void setNextId(Integer nextId) {
+    public SqlFrom setNextId(Integer nextId) {
         this.nextId = nextId;
+        return this;
     }
 
     public Integer getSubQueryId() {
         return subQueryId;
     }
 
-    public void setSubQueryId(Integer subQueryId) {
+    public SqlFrom setSubQueryId(Integer subQueryId) {
         this.subQueryId = subQueryId;
+        return this;
     }
 
     public String getLeftOwner() {
         return leftOwner;
     }
 
-    public void setLeftOwner(String leftOwner) {
-        this.leftOwner = leftOwner == null ? null : leftOwner.trim();
+    public SqlFrom setLeftOwner(String leftOwner) {
+        this.leftOwner = leftOwner;
+        return this;
     }
 
     public String getRightOwner() {
         return rightOwner;
     }
 
-    public void setRightOwner(String rightOwner) {
-        this.rightOwner = rightOwner == null ? null : rightOwner.trim();
+    public SqlFrom setRightOwner(String rightOwner) {
+        this.rightOwner = rightOwner;
+        return this;
     }
 
     public String getLeftElement() {
         return leftElement;
     }
 
-    public void setLeftElement(String leftElement) {
-        this.leftElement = leftElement == null ? null : leftElement.trim();
+    public SqlFrom setLeftElement(String leftElement) {
+        this.leftElement = leftElement;
+        return this;
     }
 
     public String getRightElement() {
         return rightElement;
     }
 
-    public void setRightElement(String rightElement) {
-        this.rightElement = rightElement == null ? null : rightElement.trim();
+    public SqlFrom setRightElement(String rightElement) {
+        this.rightElement = rightElement;
+        return this;
     }
 
     public String getSymbol() {
         return symbol;
     }
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol == null ? null : symbol.trim();
+    public SqlFrom setSymbol(String symbol) {
+        this.symbol = symbol;
+        return this;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", optimistic=").append(optimistic);
-        sb.append(", tableName=").append(tableName);
-        sb.append(", alias=").append(alias);
+        final StringBuilder sb = new StringBuilder("SqlFrom{");
+        sb.append("updateTime=").append(updateTime);
+        sb.append(", tableName='").append(tableName).append('\'');
+        sb.append(", alias='").append(alias).append('\'');
         sb.append(", selectId=").append(selectId);
-        sb.append(", sqlObjectType=").append(sqlObjectType);
-        sb.append(", owner=").append(owner);
-        sb.append(", joinType=").append(joinType);
+        sb.append(", sqlObjectType='").append(sqlObjectType).append('\'');
+        sb.append(", owner='").append(owner).append('\'');
+        sb.append(", joinType='").append(joinType).append('\'');
         sb.append(", nextId=").append(nextId);
         sb.append(", subQueryId=").append(subQueryId);
-        sb.append(", leftOwner=").append(leftOwner);
-        sb.append(", rightOwner=").append(rightOwner);
-        sb.append(", leftElement=").append(leftElement);
-        sb.append(", rightElement=").append(rightElement);
-        sb.append(", symbol=").append(symbol);
-        sb.append("]");
+        sb.append(", leftOwner='").append(leftOwner).append('\'');
+        sb.append(", rightOwner='").append(rightOwner).append('\'');
+        sb.append(", leftElement='").append(leftElement).append('\'');
+        sb.append(", rightElement='").append(rightElement).append('\'');
+        sb.append(", symbol='").append(symbol).append('\'');
+        sb.append(", id=").append(id);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", optimistic='").append(optimistic).append('\'');
+        sb.append(", remark='").append(remark).append('\'');
+        sb.append(", operator='").append(operator).append('\'');
+        sb.append('}');
         return sb.toString();
     }
 }

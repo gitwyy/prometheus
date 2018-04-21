@@ -9,7 +9,7 @@
 		]]>
 	</select>
 
-	<select id="load" resultType="java.util.Map" parameterType="java.lang.String">
+	<select id="load"  parameterType="java.lang.String">
 		insert overwrite local directory '${path}'
 			row format delimited
 			fields terminated by '\t'

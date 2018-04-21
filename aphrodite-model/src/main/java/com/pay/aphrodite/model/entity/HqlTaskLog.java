@@ -1,114 +1,53 @@
 package com.pay.aphrodite.model.entity;
 
-import java.util.Date;
-
-public class HqlTaskLog {
-    private Integer id;
-
-    private Date createTime;
-
-    private Integer optimistic;
-
-    private String operator;
+public class HqlTaskLog extends BaseEntity<HqlTaskLog>{
 
     private String lfsPath;
 
-    private String taskStatus;
-
-    private String remark;
-
-    private Integer step;
+    private String taskStep;
 
     private String taskNo;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Integer getOptimistic() {
-        return optimistic;
-    }
-
-    public void setOptimistic(Integer optimistic) {
-        this.optimistic = optimistic;
-    }
-
-    public String getOperator() {
-        return operator;
-    }
-
-    public void setOperator(String operator) {
-        this.operator = operator == null ? null : operator.trim();
-    }
 
     public String getLfsPath() {
         return lfsPath;
     }
 
-    public void setLfsPath(String lfsPath) {
-        this.lfsPath = lfsPath == null ? null : lfsPath.trim();
+    public HqlTaskLog setLfsPath(String lfsPath) {
+        this.lfsPath = lfsPath;
+        return this;
     }
 
-    public String getTaskStatus() {
-        return taskStatus;
+    public String getTaskStep() {
+        return taskStep;
     }
 
-    public void setTaskStatus(String taskStatus) {
-        this.taskStatus = taskStatus == null ? null : taskStatus.trim();
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
-    }
-
-    public Integer getStep() {
-        return step;
-    }
-
-    public void setStep(Integer step) {
-        this.step = step;
+    public HqlTaskLog setTaskStep(String taskStep) {
+        this.taskStep = taskStep;
+        return this;
     }
 
     public String getTaskNo() {
         return taskNo;
     }
 
-    public void setTaskNo(String taskNo) {
-        this.taskNo = taskNo == null ? null : taskNo.trim();
+    public HqlTaskLog setTaskNo(String taskNo) {
+        this.taskNo = taskNo;
+        return this;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
+        final StringBuilder sb = new StringBuilder("HqlTaskLog{");
+        sb.append("lfsPath='").append(lfsPath).append('\'');
+        sb.append(", taskStep='").append(taskStep).append('\'');
+        sb.append(", taskNo='").append(taskNo).append('\'');
         sb.append(", id=").append(id);
         sb.append(", createTime=").append(createTime);
-        sb.append(", optimistic=").append(optimistic);
-        sb.append(", operator=").append(operator);
-        sb.append(", lfsPath=").append(lfsPath);
-        sb.append(", taskStatus=").append(taskStatus);
-        sb.append(", remark=").append(remark);
-        sb.append(", step=").append(step);
-        sb.append(", taskNo=").append(taskNo);
-        sb.append("]");
+        sb.append(", optimistic='").append(optimistic).append('\'');
+        sb.append(", remark='").append(remark).append('\'');
+        sb.append(", operator='").append(operator).append('\'');
+        sb.append('}');
         return sb.toString();
     }
 }

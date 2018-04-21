@@ -1,98 +1,44 @@
 package com.pay.aphrodite.model.entity;
 
-import java.util.Date;
-
-public class HqlLog {
-    private Integer id;
-
-    private Date createTime;
-
-    private Integer optimistic;
+public class HqlLog extends BaseEntity<HqlLog>{
 
     private String logArgs;
-
-    private String operator;
-
-    private String remark;
 
     private String logMethod;
 
     public HqlLog() {
-    }
-
-    public HqlLog(String logArgs, String operator, String remark,String logMethod) {
-        this.logArgs = logArgs;
-        this.operator = operator;
-        this.remark = remark;
-        this.logMethod = logMethod;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Integer getOptimistic() {
-        return optimistic;
-    }
-
-    public void setOptimistic(Integer optimistic) {
-        this.optimistic = optimistic;
+        super();
     }
 
     public String getLogArgs() {
         return logArgs;
     }
 
-    public void setLogArgs(String logArgs) {
+    public HqlLog setLogArgs(String logArgs) {
         this.logArgs = logArgs;
-    }
-
-    public String getOperator() {
-        return operator;
-    }
-
-    public void setOperator(String operator) {
-        this.operator = operator;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
+        return this;
     }
 
     public String getLogMethod() {
         return logMethod;
     }
 
-    public void setLogMethod(String logMethod) {
+    public HqlLog setLogMethod(String logMethod) {
         this.logMethod = logMethod;
+        return this;
     }
 
     @Override
     public String toString() {
-        return "HqlLog{" +
-                "id=" + id +
-                ", createTime=" + createTime +
-                ", optimistic=" + optimistic +
-                ", logArgs='" + logArgs + '\'' +
-                ", operator='" + operator + '\'' +
-                ", remark='" + remark + '\'' +
-                ", logMethod='" + logMethod + '\'' +
-                '}';
+        final StringBuilder sb = new StringBuilder("HqlLog{");
+        sb.append("logArgs='").append(logArgs).append('\'');
+        sb.append(", logMethod='").append(logMethod).append('\'');
+        sb.append(", id=").append(id);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", optimistic='").append(optimistic).append('\'');
+        sb.append(", remark='").append(remark).append('\'');
+        sb.append(", operator='").append(operator).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
